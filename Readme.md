@@ -1,0 +1,3 @@
+set DPI_DEBUG_LEVEL=64
+https://www.ibm.com/docs/en/openpages/8.2.0?topic=client-installing-oracle-instant-windows
+docker run --hostname=a22d85756078 --user=oracle --mac-address=02:42:ac:11:00:02 --env=ORACLE_PASSWORD=Tatu65019$ --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/oracle/product/21c/dbhomeXE/bin:/opt/oracle --env=ORACLE_BASE=/opt/oracle --env=ORACLE_BASE_CONFIG=/opt/oracle --env=ORACLE_BASE_HOME=/opt/oracle/homes/OraDBHome21cXE --env=ORACLE_HOME=/opt/oracle/product/21c/dbhomeXE --env=ORACLE_SID=XE --env=NLS_LANG=.AL32UTF8 --workdir=/opt/oracle -p 1522:1521 --restart=no --label='io.buildah.version=1.27.3' --label='org.opencontainers.image.source=https://github.com/gvenzl/oci-oracle-xe' --runtime=runc -d gvenzl/oracle-xe
