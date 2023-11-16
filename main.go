@@ -20,9 +20,23 @@ type User struct {
 
 func main() {
 	db, err := connectToDB()
+	defer db.Close()
+	
 	handleError(err)
 	getTotalCountUsers(db)
 	getRefCursor(db)
+	getAllUsers(db)
+}
+
+func getAllUsers(db *sql.DB) {
+	var user User
+	query := "select * from USERS"
+	rows, err := db.Query(query)
+	handleError(err)
+	for rows.Next() {
+		rows.Scan(&user.ID, &user.Name, &user.Email, &user.Gender, &user.Password)
+		fmt.Println(user)
+	}
 }
 
 // func getTotalCountUsers(db *sql.DB, email string) (User, error) {
@@ -57,7 +71,7 @@ func getRefCursor(db *sql.DB) {
 		err = sub.Scan(&user.ID, &user.Name, &user.Email, &user.Gender, &user.Password)
 		handleError(err)
 	}
-	fmt.Println("user = ", user)
+	fmt.Println("\n\nuser = ", user)
 }
 
 func connectToDB() (*sql.DB, error) {
